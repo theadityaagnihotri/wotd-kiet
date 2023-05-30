@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Word extends StatelessWidget {
+  FlutterTts flutterTts = FlutterTts();
   String word;
   String meaning;
   String example;
@@ -10,6 +12,14 @@ class Word extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    speak(String text) async {
+      await flutterTts.setLanguage("en-US");
+      await flutterTts.setPitch(1.0);
+      await flutterTts.setVolume(2.0);
+      await flutterTts.setSpeechRate(0.4);
+      await flutterTts.speak(text);
+    }
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       extendBodyBehindAppBar: true,
@@ -21,29 +31,51 @@ class Word extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 120,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 120,
               ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              child: RichText(
-                text: TextSpan(
-                  text: word + '\n',
-                  style: GoogleFonts.meriendaOne(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 40,
-                  ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    TextSpan(
-                      text: "(" + partofSpeech + ")",
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          word,
+                          style: GoogleFonts.meriendaOne(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 40,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        GestureDetector(
+                          child: const SizedBox(
+                              height: 40,
+                              width: 40,
+                              child: Image(
+                                  image: AssetImage('assets/volume.png'))),
+                          onTap: () => speak(word),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      "(" + partofSpeech + ")",
+                      // ignore: prefer_const_constructors
                       style: GoogleFonts.pangolin(
                         color: Colors.white,
                         fontStyle: FontStyle.italic,
@@ -53,84 +85,84 @@ class Word extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Container(
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  child: Text(
+                    "meaning:",
+                    style: GoogleFonts.pangolin(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                 ),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 15,
+                  horizontal: 10,
                 ),
                 child: Text(
-                  "meaning:",
-                  style: GoogleFonts.pangolin(
+                  meaning,
+                  style: GoogleFonts.kalam(
                     color: Colors.white,
+                    fontSize: 25,
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
+              const SizedBox(
+                height: 20,
               ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-              ),
-              child: Text(
-                meaning,
-                style: GoogleFonts.kalam(
-                  color: Colors.white,
-                  fontSize: 25,
+              Container(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  child: Text(
+                    "example:",
+                    style: GoogleFonts.pangolin(
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Container(
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                 ),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 15,
+                  horizontal: 10,
                 ),
                 child: Text(
-                  "example:",
-                  style: GoogleFonts.pangolin(
+                  example,
+                  style: GoogleFonts.kalam(
                     color: Colors.white,
+                    fontSize: 25,
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-              ),
-              child: Text(
-                example,
-                style: GoogleFonts.kalam(
-                  color: Colors.white,
-                  fontSize: 25,
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:wotd_kiet/iotw.dart';
 import 'package:wotd_kiet/services/local_notification_service.dart';
 import 'package:wotd_kiet/view_idioms.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 import 'package:wotd_kiet/view_words.dart';
 import 'package:home_widget/home_widget.dart';
@@ -17,6 +18,8 @@ class Wotd extends StatefulWidget {
 }
 
 class _WotdState extends State<Wotd> {
+  FlutterTts flutterTts = FlutterTts();
+
   var data = FirebaseFirestore.instance
       .collection("words")
       .limit(1)
@@ -80,6 +83,14 @@ class _WotdState extends State<Wotd> {
 
   @override
   Widget build(BuildContext context) {
+    speak(String text) async {
+      await flutterTts.setLanguage("en-US");
+      await flutterTts.setPitch(1.0);
+      await flutterTts.setVolume(2.0);
+      await flutterTts.setSpeechRate(0.4);
+      await flutterTts.speak(text);
+    }
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       extendBodyBehindAppBar: true,
@@ -90,95 +101,140 @@ class _WotdState extends State<Wotd> {
         title: const Text("WORD of THE DAY"),
       ),
       drawer: Drawer(
-          backgroundColor: Theme.of(context).backgroundColor,
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              const SizedBox(
-                height: 50,
-              ),
-              const SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: Image(image: AssetImage('assets/kiet.png'))),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
-                child: Container(
-                  height: 70,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                  child: ListTile(
-                    title: const Text(
-                      'Idiom',
-                      style: TextStyle(color: Colors.white, fontSize: 25),
+        backgroundColor: Theme.of(context).backgroundColor,
+        child: Column(
+          children: [
+            Container(
+              child: Expanded(
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 50,
                     ),
-                    onTap: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Iotw()));
-                    },
-                  ),
+                    const SizedBox(
+                        height: 200,
+                        width: 200,
+                        child: Image(image: AssetImage('assets/kiet.png'))),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 0),
+                      child: Container(
+                        height: 70,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 5),
+                        child: ListTile(
+                          title: const Text(
+                            'Idiom',
+                            style: TextStyle(color: Colors.white, fontSize: 25),
+                          ),
+                          onTap: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Iotw()));
+                          },
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 0),
+                      child: Container(
+                        height: 70,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 5),
+                        child: ListTile(
+                          title: const Text(
+                            'View Words',
+                            style: TextStyle(color: Colors.white, fontSize: 25),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ViewWords()));
+                          },
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 0),
+                      child: Container(
+                        height: 70,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 5),
+                        child: ListTile(
+                          title: const Text(
+                            'View Idioms',
+                            style: TextStyle(color: Colors.white, fontSize: 25),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ViewIdioms()));
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
-                child: Container(
-                  height: 70,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                  child: ListTile(
-                    title: const Text(
-                      'View Words',
-                      style: TextStyle(color: Colors.white, fontSize: 25),
+            ),
+            Container(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    Divider(
+                      color: Colors.white,
+                      thickness: 1,
                     ),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => ViewWords()));
-                    },
-                  ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Developed by",
+                      style: GoogleFonts.meriendaOne(
+                        color: Colors.white,
+                        fontSize: 10,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      "Aditya Agnihotri",
+                      style: GoogleFonts.meriendaOne(
+                        color: Colors.white,
+                        fontSize: 10,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
-                child: Container(
-                  height: 70,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                  child: ListTile(
-                    title: const Text(
-                      'View Idioms',
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ViewIdioms()));
-                    },
-                  ),
-                ),
-              ),
-            ],
-          )),
+            ),
+          ],
+        ),
+      ),
       body: Stack(children: [
         StreamBuilder(
           stream: data,
@@ -211,28 +267,47 @@ class _WotdState extends State<Wotd> {
                         padding: const EdgeInsets.symmetric(
                           horizontal: 15,
                         ),
-                        child: RichText(
-                          text: TextSpan(
-                            text: snapshot.data!.docs[index]['word'] + '\n',
-                            style: GoogleFonts.meriendaOne(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: "(" +
-                                    snapshot.data!.docs[index]['eg2'] +
-                                    ")",
-                                // ignore: prefer_const_constructors
-                                style: GoogleFonts.pangolin(
-                                  color: Colors.white,
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 30,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  snapshot.data!.docs[index]['word'],
+                                  style: GoogleFonts.meriendaOne(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 40,
+                                  ),
                                 ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                GestureDetector(
+                                  child: const SizedBox(
+                                      height: 40,
+                                      width: 40,
+                                      child: Image(
+                                          image:
+                                              AssetImage('assets/volume.png'))),
+                                  onTap: () =>
+                                      speak(snapshot.data!.docs[index]['word']),
+                                ),
+                              ],
+                            ),
+                            Text(
+                              "(" + snapshot.data!.docs[index]['eg2'] + ")",
+                              // ignore: prefer_const_constructors
+                              style: GoogleFonts.pangolin(
+                                color: Colors.white,
+                                fontStyle: FontStyle.italic,
+                                fontSize: 30,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                       SizedBox(

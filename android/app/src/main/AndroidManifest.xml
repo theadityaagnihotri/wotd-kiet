@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.wotd_kiet">
+    package="com.aditya.wotd_kiet">
    <application
         android:label="WoTD-KIET"
         android:name="${applicationName}"
@@ -30,6 +30,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
         <receiver 
             android:name="AppWidgetProvider"
             android:exported="true"

@@ -1,4 +1,4 @@
-package com.example.wotd_kiet
+package com.aditya.wotd_kiet
 
 import android.appwidget.AppWidgetManager
 import android.content.Context

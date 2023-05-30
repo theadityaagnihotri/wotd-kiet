@@ -24,6 +24,7 @@ class _ViewIdiomsState extends State<ViewIdioms> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
+        title: Text("View Idioms"),
       ),
       body: Stack(children: [
         StreamBuilder(

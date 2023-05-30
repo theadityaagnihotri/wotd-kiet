@@ -35,89 +35,136 @@ class _IotwState extends State<Iotw> {
       ),
       drawer: Drawer(
           backgroundColor: Theme.of(context).backgroundColor,
-          child: ListView(
-            padding: EdgeInsets.zero,
+          child: Column(
             children: [
-              const SizedBox(
-                height: 50,
-              ),
-              const SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: Image(image: AssetImage('assets/kiet.png'))),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
-                child: Container(
-                  height: 70,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: ListTile(
-                    title: const Text(
-                      'Word',
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                    ),
-                    onTap: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Wotd()));
-                    },
+              Container(
+                child: Expanded(
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      const SizedBox(
+                          height: 200,
+                          width: 200,
+                          child: Image(image: AssetImage('assets/kiet.png'))),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 0),
+                        child: Container(
+                          height: 70,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: ListTile(
+                            title: const Text(
+                              'Word',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 25),
+                            ),
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Wotd()));
+                            },
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 0),
+                        child: Container(
+                          height: 70,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: ListTile(
+                            title: const Text(
+                              'View Words',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 25),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ViewWords()));
+                            },
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 0),
+                        child: Container(
+                          height: 70,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: ListTile(
+                            title: const Text(
+                              'View Idioms',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 25),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ViewIdioms()));
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
-                child: Container(
-                  height: 70,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: ListTile(
-                    title: const Text(
-                      'View Words',
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                    ),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => ViewWords()));
-                    },
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
-                child: Container(
-                  height: 70,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: ListTile(
-                    title: const Text(
-                      'View Idioms',
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ViewIdioms()));
-                    },
+              Container(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    children: [
+                      Divider(
+                        color: Colors.white,
+                        thickness: 1,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Developed by",
+                        style: GoogleFonts.meriendaOne(
+                          color: Colors.white,
+                          fontSize: 10,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "Aditya Agnihotri",
+                        style: GoogleFonts.meriendaOne(
+                          color: Colors.white,
+                          fontSize: 10,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -134,13 +181,6 @@ class _IotwState extends State<Iotw> {
             return ListView.builder(
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (ctx, int index) {
-                HomeWidget.saveWidgetData<String>(
-                    '_counterText', snapshot.data!.docs[index]['idiom']);
-                HomeWidget.saveWidgetData<String>(
-                    '_abc', snapshot.data!.docs[index]['meaning']);
-                HomeWidget.updateWidget(
-                    name: 'AppWidgetProvider', iOSName: 'AppWidgetProvider');
-
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Column(

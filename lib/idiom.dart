@@ -21,143 +21,145 @@ class Idiom extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 120,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 120,
               ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-              ),
-              child: RichText(
-                text: TextSpan(
-                  text: idiom,
-                  style: GoogleFonts.meriendaOne(
-                    color: Colors.white,
-                    fontSize: 30,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Container(
+              Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 15,
                 ),
-                child: Text(
-                  "meaning:",
-                  style: GoogleFonts.pangolin(
-                    color: Colors.white,
+                child: RichText(
+                  text: TextSpan(
+                    text: idiom,
+                    style: GoogleFonts.meriendaOne(
+                      color: Colors.white,
+                      fontSize: 30,
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
+              const SizedBox(
+                height: 20,
               ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-              ),
-              child: Text(
-                meaning,
-                style: GoogleFonts.kalam(
-                  color: Colors.white,
-                  fontSize: 25,
+              Container(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  child: Text(
+                    "meaning:",
+                    style: GoogleFonts.pangolin(
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Container(
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                 ),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 15,
+                  horizontal: 10,
                 ),
                 child: Text(
-                  "example:",
-                  style: GoogleFonts.pangolin(
+                  meaning,
+                  style: GoogleFonts.kalam(
                     color: Colors.white,
+                    fontSize: 25,
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
+              const SizedBox(
+                height: 20,
               ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-              ),
-              child: Text(
-                example1,
-                style: GoogleFonts.kalam(
-                  color: Colors.white,
-                  fontSize: 25,
+              Container(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  child: Text(
+                    "example:",
+                    style: GoogleFonts.pangolin(
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Container(
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                 ),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 15,
+                  horizontal: 10,
                 ),
                 child: Text(
-                  "example:",
-                  style: GoogleFonts.pangolin(
+                  example1,
+                  style: GoogleFonts.kalam(
                     color: Colors.white,
+                    fontSize: 25,
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
+              const SizedBox(
+                height: 20,
               ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-              ),
-              child: Text(
-                example2,
-                style: GoogleFonts.kalam(
-                  color: Colors.white,
-                  fontSize: 25,
+              Container(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                  ),
+                  child: Text(
+                    "example:",
+                    style: GoogleFonts.pangolin(
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                ),
+                child: Text(
+                  example2,
+                  style: GoogleFonts.kalam(
+                    color: Colors.white,
+                    fontSize: 25,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

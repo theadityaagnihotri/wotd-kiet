@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:556933853493:android:d9cd110eb099d59a161c7c",
+        "mobilesdk_app_id": "1:556933853493:android:77fe4ceba348d51c161c7c",
         "android_client_info": {
-          "package_name": "com.example.add_words"
+          "package_name": "com.aditya.wotd_kiet"
         }
       },
       "oauth_client": [
         {
-          "client_id": "556933853493-venf03kh3lnkngsiof3tbhvni2f5dc90.apps.googleusercontent.com",
+          "client_id": "556933853493-12jo1on7vivp3elaae2955l23itnnitl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.add_words",
+            "package_name": "com.aditya.wotd_kiet",
             "certificate_hash": "ac6ebca99e0df94be0e9bba59b7615a760a0763a"
           }
         },
@@ -51,17 +51,17 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:556933853493:android:316403d73e0e5d9b161c7c",
+        "mobilesdk_app_id": "1:556933853493:android:d9cd110eb099d59a161c7c",
         "android_client_info": {
-          "package_name": "com.example.wotd_kiet"
+          "package_name": "com.example.add_words"
         }
       },
       "oauth_client": [
         {
-          "client_id": "556933853493-r8jnhlb7bk300l6vf2oeedhd5nbo4q7g.apps.googleusercontent.com",
+          "client_id": "556933853493-venf03kh3lnkngsiof3tbhvni2f5dc90.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.wotd_kiet",
+            "package_name": "com.example.add_words",
             "certificate_hash": "ac6ebca99e0df94be0e9bba59b7615a760a0763a"
           }
         },

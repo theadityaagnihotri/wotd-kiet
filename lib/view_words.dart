@@ -23,6 +23,7 @@ class _ViewWordsState extends State<ViewWords> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
+        title: Text("View Words"),
       ),
       body: Stack(children: [
         StreamBuilder(

@@ -1,4 +1,4 @@
-package com.example.wotd_kiet
+package com.aditya.wotd_kiet
 
 import io.flutter.embedding.android.FlutterActivity
 
